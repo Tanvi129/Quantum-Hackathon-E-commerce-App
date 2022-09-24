@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:quantum_hackathon/widgets/shopping_item_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -64,15 +64,17 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Flexible(
-              fit: FlexFit.loose,
+            Expanded(
+              // fit: FlexFit.loose,
               child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
-                      onTap: () {},
-                      child: ShoppingItemList(),
+                      onTap: () {
+                        Navigator.pushNamed(context, '/productscreen');
+                      },
+                      child: ShoppingListItem(),
                     );
                   }),
             ),
