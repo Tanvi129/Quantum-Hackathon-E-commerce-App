@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quantum_hackathon/models/arguments.dart';
+import 'package:quantum_hackathon/models/productModel.dart';
+import 'package:quantum_hackathon/services/ProductListApi.dart';
 
 import 'package:quantum_hackathon/widgets/shopping_item_list.dart';
 
@@ -10,6 +13,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  
+
+  ProductListApi productListApi = ProductListApi();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,20 +70,74 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 20,
             ),
-            Expanded(
-              // fit: FlexFit.loose,
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/productscreen');
-                      },
-                      child: ShoppingListItem(),
+            // Expanded(
+            //   // fit: FlexFit.loose,
+            //   child: ListView.builder(
+            //       shrinkWrap: true,
+            //       itemCount: 5,
+            //       itemBuilder: (BuildContext context, int index) {
+            //         return InkWell(
+            //           onTap: () {
+            //             Navigator.pushNamed(context, '/productscreen');
+            //           },
+            //           child: ShoppingListItem(),
+            //         );
+            //       }),
+            // ),
+            FutureBuilder(
+              future: productListApi.getdata(),
+              builder: ((context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.none) {
+                  return const AlertDialog(
+                    title: Text("Failed to load Data"),
+                  );
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.connectionState == ConnectionState.done) {
+                  // If we got an error
+                  if (snapshot.hasError) {
+                    return Center(
+                        child: AlertDialog(
+                      title: Text('${snapshot.error}'),
+                    )
+                        //  Text(
+                        //   '${snapshot.error} occured',
+                        //   style: const TextStyle(fontSize: 18),
+                        // ),
+                        );
+                  } else if (snapshot.hasData) {
+                    final List<ProductModel> weatherData =
+                        snapshot.data as List<ProductModel>;
+                    return Expanded(
+                      // fit: FlexFit.loose,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: weatherData.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return InkWell(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/productscreen',arguments: Arguments(productname: weatherData[index].productName,price: weatherData[index].price,));
+                              },
+                              child: ShoppingListItem(productname: weatherData[index].productName,price: weatherData[index].price,)
+                            );
+                          }),
                     );
-                  }),
-            ),
+                  }
+                }
+                return const Center(
+                    child: AlertDialog(
+                  alignment: Alignment.center,
+                  title: Text(
+                    "Failed to load Data",
+                    textAlign: TextAlign.center,
+                  ),
+                ));
+              }),
+            )
           ],
         ),
       ),

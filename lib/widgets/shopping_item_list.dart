@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class ShoppingListItem
  extends StatelessWidget {
   const ShoppingListItem
-  ({Key? key}) : super(key: key);
+  ({Key? key, this.productname, this.price}) : super(key: key);
+
+  final String? productname;
+  final double? price;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,8 @@ class ShoppingListItem
       ),
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(8),
-      child: Wrap(direction: Axis.horizontal, alignment: WrapAlignment.start,
+      child: Wrap(
+        direction: Axis.horizontal, alignment: WrapAlignment.start,
           // crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             SizedBox(
@@ -28,18 +32,18 @@ class ShoppingListItem
             ),
             Wrap(
               direction: Axis.vertical,
-              children: const [
+              children:  [
                 Text(
-                  "Maxi Dress",
-                  style: TextStyle(
+                  productname?? "Unable to Load",
+                  style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
+                const Text(
                   "Price: ",
                   style: TextStyle(
                     fontSize: 20,
@@ -47,7 +51,7 @@ class ShoppingListItem
                   ),
                 ),
                 Text(
-                  "\$ 100",
+                  "\$ " + price.toString(),
                   style: TextStyle(
                     fontSize: 18,
                   ),

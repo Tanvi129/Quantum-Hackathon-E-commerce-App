@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quantum_hackathon/models/arguments.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -9,7 +10,9 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   @override
+
   Widget build(BuildContext context) {
+    final Arguments args = ModalRoute.of(context)!.settings.arguments as Arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -23,10 +26,10 @@ class _ProductScreenState extends State<ProductScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                "Maxi Dress",
+               Text(
+                args.productname?? "Unable to Load",
                 textAlign: TextAlign.left,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -60,11 +63,11 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
               ),
-              const Align(
+               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "\$ 100",
-                  style: TextStyle(
+                  "\$ "+  args.price.toString(),
+                  style: const TextStyle(
                     fontSize: 24,
                   ),
                 ),
@@ -73,7 +76,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 10,
               ),
               const Text(
-                "Some very nice description about the dress. ",
+                "Some very nice description about the Prouduct. ",
                 style: TextStyle(
                   fontSize: 20,
                 ),
