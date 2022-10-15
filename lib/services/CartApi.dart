@@ -24,5 +24,10 @@ class CartApi{
     }
     return cartModel;
   }
-  
+  addtocart(int? productId) async{
+    final url = Uri.parse('http://ec2-13-126-121-46.ap-south-1.compute.amazonaws.com:9095/cart/addItemToCart?productId=$productId&&userId=1&&quantity=1');
+    var response = await http.post(url);
+
+  }
+
 }

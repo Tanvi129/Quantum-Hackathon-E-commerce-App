@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quantum_hackathon/models/arguments.dart';
+import 'package:quantum_hackathon/services/CartApi.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -9,10 +10,11 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
+  CartApi cartApi = CartApi();
   @override
-
   Widget build(BuildContext context) {
-    final Arguments args = ModalRoute.of(context)!.settings.arguments as Arguments;
+    final Arguments args =
+        ModalRoute.of(context)!.settings.arguments as Arguments;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,14 +22,14 @@ class _ProductScreenState extends State<ProductScreen> {
       ),
       body: Container(
         color: Colors.pink[50],
-        constraints: BoxConstraints.expand(),
+        constraints: const BoxConstraints.expand(),
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Text(
-                args.productname?? "Unable to Load",
+              Text(
+                args.productname ?? "Unable to Load",
                 textAlign: TextAlign.left,
                 style: const TextStyle(
                   fontSize: 30,
@@ -63,10 +65,10 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
               ),
-               Align(
+              Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "\$ "+  args.price.toString(),
+                  "\$ " + args.price.toString(),
                   style: const TextStyle(
                     fontSize: 24,
                   ),
@@ -87,7 +89,12 @@ class _ProductScreenState extends State<ProductScreen> {
               Align(
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
-                    onPressed: null,
+                    onPressed: () {
+                      cartApi.addtocart(args.productId);
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content:  Text("Item Added to the Cart"),
+                      ));
+                    },
                     child: const Text(
                       "Add To Cart",
                       style: TextStyle(
@@ -96,11 +103,13 @@ class _ProductScreenState extends State<ProductScreen> {
                       ),
                     ),
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.black),
-                        fixedSize:
-                            MaterialStateProperty.all<Size>(const Size(150, 50)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.black),
+                        fixedSize: MaterialStateProperty.all<Size>(
+                            const Size(150, 50)),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         )))),
               )

@@ -15,8 +15,8 @@ class CartModel {
     final cartId = data["cartId"];
     int count = 0;
     for (int i = 0; i < productList.length; i++) {
-      int? e = productList[i].quantity;
-      count++;
+      int e = productList[i].quantity as int;
+      count+=e;
     }
     final itemCount=count;
 
