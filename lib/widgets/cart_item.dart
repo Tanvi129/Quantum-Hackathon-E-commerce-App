@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quantum_hackathon/models/productModel.dart';
 
 class CartListItem extends StatelessWidget {
-  const CartListItem({Key? key}) : super(key: key);
+  const CartListItem({Key? key, this.productModel}) : super(key: key);
+  final ProductModel? productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,29 +32,29 @@ class CartListItem extends StatelessWidget {
               direction: Axis.vertical,
               children: [
                 Text(
-                  "Maxi Dress",
-                  style: TextStyle(
+                  productModel?.productName ??"Unable to load",
+                  style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Price: ",
+                const Text(
+                  "Price: "  ,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  "\$ 100",
-                  style: TextStyle(
+                  "\$ " + productModel!.price.toString(),
+                  style: const TextStyle(
                     fontSize: 18,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -60,19 +62,19 @@ class CartListItem extends StatelessWidget {
                  
 
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding:  EdgeInsets.all(8.0),
                       child: Icon(Icons.remove,
                       color: Colors.pink),
                     ),
                     Text(
-                      "1",
-                      style: TextStyle(
+                      productModel!.quantity.toString(),
+                      style: const TextStyle(
                         fontSize: 18,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    const Padding(
+                      padding:  EdgeInsets.all(8.0),
                       child: Icon(Icons.add,
                       color: Colors.pink,),
                     ),

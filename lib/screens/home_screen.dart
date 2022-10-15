@@ -13,8 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
-
   ProductListApi productListApi = ProductListApi();
   @override
   Widget build(BuildContext context) {
@@ -110,20 +108,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         // ),
                         );
                   } else if (snapshot.hasData) {
-                    final List<ProductModel> weatherData =
+                    final List<ProductModel> product =
                         snapshot.data as List<ProductModel>;
                     return Expanded(
                       // fit: FlexFit.loose,
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: weatherData.length,
+                          itemCount: product.length,
                           itemBuilder: (BuildContext context, int index) {
                             return InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/productscreen',arguments: Arguments(productname: weatherData[index].productName,price: weatherData[index].price,));
-                              },
-                              child: ShoppingListItem(productname: weatherData[index].productName,price: weatherData[index].price,)
-                            );
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/productscreen',
+                                      arguments: Arguments(
+                                          productname:
+                                              product[index].productName,
+                                          price: product[index].price,
+                                          productId: product[index].productId));
+                                },
+                                child: ShoppingListItem(
+                                  productname: product[index].productName,
+                                  price: product[index].price,
+                                ));
                           }),
                     );
                   }

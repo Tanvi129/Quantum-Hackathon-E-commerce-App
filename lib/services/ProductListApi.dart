@@ -11,7 +11,7 @@ class ProductListApi{
     try{
       
        final url = Uri.parse(
-        'http://ec2-3-111-214-166.ap-south-1.compute.amazonaws.com:9095/product/viewProducts');
+        'http://ec2-13-126-121-46.ap-south-1.compute.amazonaws.com:9095/product/viewProducts');
 
        var response = await http.get(url);
        var data = jsonDecode(response.body) ;

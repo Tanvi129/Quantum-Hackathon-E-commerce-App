@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quantum_hackathon/cartscreenLogic.dart';
 import 'package:quantum_hackathon/screens/cart_screen.dart';
 import 'package:quantum_hackathon/screens/home_screen.dart';
 import 'package:quantum_hackathon/screens/product_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/homescreen':(context) => HomeScreen(),
-        '/cartscreen':(context) => CartScreen(),
+        '/cartscreen':(context) => CartScreenLogic(),
         '/productscreen':(context) => ProductScreen(),
           
 
