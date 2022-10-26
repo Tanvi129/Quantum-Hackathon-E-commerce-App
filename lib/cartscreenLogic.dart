@@ -60,7 +60,7 @@ class _CartScreenLogicState extends State<CartScreenLogic> {
                 child: AlertDialog(
               alignment: Alignment.center,
               title: Text(
-                "Failed to load Data",
+                "Your Cart is Empty!!!",
                 textAlign: TextAlign.center,
               ),
             )),

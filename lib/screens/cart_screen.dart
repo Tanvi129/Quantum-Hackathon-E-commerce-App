@@ -82,7 +82,9 @@ class _CartScreenState extends State<CartScreen> {
             Align(
               alignment: Alignment.centerRight,
               child: ElevatedButton(
-                  onPressed: null,
+                  onPressed: (){
+                    Navigator.pushNamed(context, '/paymentscreen');
+                  },
                   child: const Text(
                     "Checkout",
                     style: TextStyle(
