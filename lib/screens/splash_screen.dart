@@ -27,6 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
    _jumpHome() async{
     await Future.delayed(const Duration(seconds: 1),(){});
-    Navigator.pushReplacementNamed(context, '/homescreen');
+    Navigator.pushReplacementNamed(context, '/loginscreen');
    }
 }

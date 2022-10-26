@@ -10,7 +10,7 @@ class CartApi{
     try{
       
        final url = Uri.parse(
-        'http://ec2-13-126-121-46.ap-south-1.compute.amazonaws.com:9095/cart/viewItemsforUser?userId=1');
+        'http://ec2-3-6-103-221.ap-south-1.compute.amazonaws.com:9095/cart/viewItemsforUser?userId=1');
 
        var response = await http.get(url);
        var data = jsonDecode(response.body) ;
@@ -25,8 +25,14 @@ class CartApi{
     return cartModel;
   }
   addtocart(int? productId) async{
-    final url = Uri.parse('http://ec2-13-126-121-46.ap-south-1.compute.amazonaws.com:9095/cart/addItemToCart?productId=$productId&&userId=1&&quantity=1');
+    try{
+    final url = Uri.parse('http://ec2-3-6-103-221.ap-south-1.compute.amazonaws.com:9095/cart/addItemToCart?productId=$productId&&userId=1&&quantity=1');
     var response = await http.post(url);
+
+    }catch(e){
+      log(e.toString());
+    }
+    
 
   }
 
