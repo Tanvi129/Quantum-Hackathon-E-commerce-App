@@ -36,4 +36,16 @@ class CartApi{
 
   }
 
+  removefromcart(int? productId) async{
+    try{
+    final url = Uri.parse('http://ec2-3-6-103-221.ap-south-1.compute.amazonaws.com:9095/cart/removeItemFromCart?productId=$productId&&userId=1&&quantity=1');
+    var response = await http.post(url);
+
+    }catch(e){
+      log(e.toString());
+    }
+    
+
+  }
+
 }

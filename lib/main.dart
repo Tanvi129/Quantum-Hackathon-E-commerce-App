@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         '/cartscreen':(context) => CartScreenLogic(),
         '/productscreen':(context) => ProductScreen(),
         '/paymentscreen':(context) => PaymentScreen(),
-          
+          '/cartscreenlogic':(context) => CartScreenLogic(),
 
       },
     );

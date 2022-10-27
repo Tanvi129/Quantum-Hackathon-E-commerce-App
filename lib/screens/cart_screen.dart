@@ -13,8 +13,10 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+ 
   @override
   Widget build(BuildContext context) {
+    String cartSubtotal = widget.cartModel.cartTotal.toString();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -38,21 +40,24 @@ class _CartScreenState extends State<CartScreen> {
                   shrinkWrap: true,
                   itemCount: widget.cartModel.productList?.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/productscreen',
-                            arguments: Arguments(
-                                productname: widget
-                                    .cartModel.productList![index].productName,
-                                price:
-                                    widget.cartModel.productList![index].price,
-                                productId: widget
-                                    .cartModel.productList![index].productId));
-                      },
-                      child: CartListItem(
+                    // return InkWell(
+                    //   onTap: () {
+                    //     Navigator.pushNamed(context, '/productscreen',
+                    //         arguments: Arguments(
+                    //             productname: widget
+                    //                 .cartModel.productList![index].productName,
+                    //             price:
+                    //                 widget.cartModel.productList![index].price,
+                    //             productId: widget
+                    //                 .cartModel.productList![index].productId));
+                    //   },
+                    //   child: CartListItem(
+                    //     productModel: widget.cartModel.productList![index],
+                    //   ),
+                    // );
+                    return CartListItem(
                         productModel: widget.cartModel.productList![index],
-                      ),
-                    );
+                      );
                   }),
             ),
             const SizedBox(
@@ -68,7 +73,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
                 Text(
-                  widget.cartModel.cartTotal.toString(),
+                  cartSubtotal,
                   style: const TextStyle(
                     fontSize: 25,
                     // fontWeight: FontWeight.bold,
@@ -83,7 +88,7 @@ class _CartScreenState extends State<CartScreen> {
               alignment: Alignment.centerRight,
               child: ElevatedButton(
                   onPressed: (){
-                    Navigator.pushNamed(context, '/paymentscreen');
+                    Navigator.pushNamed(context, '/paymentscreen', arguments: {"cartSubtotal":cartSubtotal});
                   },
                   child: const Text(
                     "Checkout",

@@ -14,12 +14,15 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff00ffff),
         centerTitle: true,
-        title: const Text("Login"),
+        title: const Text("Login",style: TextStyle(
+          color: Colors.black,
+        ),),
       ),
       body: Container(
         padding: const EdgeInsets.all(24),
-        color: Colors.pink[50],
+        color: Colors.black,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -31,6 +34,7 @@ class LoginScreen extends StatelessWidget {
                     const Text(
                       "User Name",
                       style: TextStyle(
+                        color: Color(0xff00ffff),
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -62,8 +66,10 @@ class LoginScreen extends StatelessWidget {
                       height: 10,
                     ),
                     const Text(
+                      
                       "Password",
                       style: TextStyle(
+                        color: Color(0xff00ffff),
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -121,12 +127,12 @@ class LoginScreen extends StatelessWidget {
                 child: const Text(
                   "Login",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                   ),
                 ),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.black),
+                    backgroundColor: MaterialStateProperty.all(Color(0xff00ffff)),
                     fixedSize:
                         MaterialStateProperty.all<Size>(const Size(150, 50)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

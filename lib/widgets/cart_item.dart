@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:quantum_hackathon/cartscreenLogic.dart';
+import 'package:quantum_hackathon/models/arguments.dart';
 import 'package:quantum_hackathon/models/productModel.dart';
+import 'package:quantum_hackathon/services/CartApi.dart';
 
-class CartListItem extends StatelessWidget {
-  const CartListItem({Key? key, this.productModel}) : super(key: key);
+class CartListItem extends StatefulWidget {
+    CartListItem({Key? key, this.productModel}) : super(key: key);
   final ProductModel? productModel;
+
+  @override
+  State<CartListItem> createState() => _CartListItemState();
+}
+
+class _CartListItemState extends State<CartListItem> {
+  CartApi cartApi = CartApi();
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +27,23 @@ class CartListItem extends StatelessWidget {
       child: Wrap(direction: Axis.horizontal, alignment: WrapAlignment.start,
           // crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            Container(
-              height: 150,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    "assets/images/dressplaceholder.jpg",
-                  )),
+            InkWell(
+              onTap: () {
+                        Navigator.pushNamed(context, '/productscreen',
+                            arguments: Arguments(
+                                productname: widget.productModel!.productName,
+                                price:
+                                    widget.productModel!.price,
+                                productId: widget.productModel!.productId));
+                      },
+              child: Container(
+                height: 150,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      "assets/images/dressplaceholder.jpg",
+                    )),
+              ),
             ),
             const SizedBox(
               width: 10,
@@ -32,7 +52,7 @@ class CartListItem extends StatelessWidget {
               direction: Axis.vertical,
               children: [
                 Text(
-                  productModel?.productName ??"Unable to load",
+                  widget.productModel?.productName ??"Unable to load",
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -49,7 +69,7 @@ class CartListItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "\$ " + productModel!.price.toString(),
+                  "\$ " + widget.productModel!.price.toString(),
                   style: const TextStyle(
                     fontSize: 18,
                   ),
@@ -68,14 +88,23 @@ class CartListItem extends StatelessWidget {
                       color: Colors.pink),
                     ),
                     Text(
-                      productModel!.quantity.toString(),
+                      widget.productModel!.quantity.toString(),
                       style: const TextStyle(
                         fontSize: 18,
                       ),
                     ),
-                    const Padding(
-                      padding:  EdgeInsets.all(8.0),
-                      child: Icon(Icons.add,
+                     Padding(
+                      padding:  const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        onPressed:(){
+                          setState(() {
+                            cartApi.addtocart(widget.productModel!.productId);
+                          });
+                          Navigator.pushReplacementNamed(context, '/cartscreenlogic');
+
+
+                        },
+                        icon:const Icon(Icons.add),
                       color: Colors.pink,),
                     ),
                   ],
