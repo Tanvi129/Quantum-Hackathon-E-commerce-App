@@ -18,12 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff14FFEC),
         centerTitle: true,
-        title: const Text("Downtown"),
+        title: const Text("Downtown",style: TextStyle(
+          color: Color(0xff212121),
+        ),),
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
-        color: Colors.pink[50],
+        color: const Color(0xff323232),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -36,12 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Text(
                     "Find Your Style",
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.shopping_cart),
+                    icon: const Icon(Icons.shopping_cart,
+                    color: Colors.white,),
                     iconSize: 35,
                     onPressed: () {
                       Navigator.pushNamed(context, '/cartscreen');

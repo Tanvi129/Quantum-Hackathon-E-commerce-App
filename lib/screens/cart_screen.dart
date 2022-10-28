@@ -20,9 +20,13 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("My Cart"),
+        backgroundColor: const Color(0xff14FFEC),
+        title: const Text("My Cart",style: TextStyle(
+          color: Color(0xff212121),
+        ),),
       ),
       body: Container(
+        color: const Color(0xff323232),
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,6 +34,7 @@ class _CartScreenState extends State<CartScreen> {
              Text(
               "Item Count : " + widget.cartModel.itemCount.toString(),
               style: const TextStyle(
+                color: Colors.white,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
@@ -67,7 +72,9 @@ class _CartScreenState extends State<CartScreen> {
               children: [
                 const Text(
                   "Cart SubTotal : ",
+                  
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -75,6 +82,7 @@ class _CartScreenState extends State<CartScreen> {
                 Text(
                   cartSubtotal,
                   style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 25,
                     // fontWeight: FontWeight.bold,
                   ),
@@ -93,12 +101,12 @@ class _CartScreenState extends State<CartScreen> {
                   child: const Text(
                     "Checkout",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 18,
                     ),
                   ),
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                      backgroundColor: MaterialStateProperty.all(const Color(0xff14FFEC)),
                       fixedSize:
                           MaterialStateProperty.all<Size>(const Size(150, 50)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(

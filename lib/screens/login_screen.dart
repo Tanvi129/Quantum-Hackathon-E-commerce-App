@@ -14,15 +14,15 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff00ffff),
+        backgroundColor: const Color(0xff14FFEC),
         centerTitle: true,
         title: const Text("Login",style: TextStyle(
-          color: Colors.black,
+          color: Color(0xff212121),
         ),),
       ),
       body: Container(
         padding: const EdgeInsets.all(24),
-        color: Colors.black,
+        color: const Color(0xff323232),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                     const Text(
                       "User Name",
                       style: TextStyle(
-                        color: Color(0xff00ffff),
+                        color: Color(0xff14FFEC),
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                       
                       "Password",
                       style: TextStyle(
-                        color: Color(0xff00ffff),
+                        color: Color(0xff14FFEC),
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
@@ -132,7 +132,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Color(0xff00ffff)),
+                    backgroundColor: MaterialStateProperty.all(Color(0xff14FFEC)),
                     fixedSize:
                         MaterialStateProperty.all<Size>(const Size(150, 50)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(

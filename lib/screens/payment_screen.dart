@@ -23,22 +23,31 @@ class PaymentScreen extends StatelessWidget {
     String cartSubtotal = arguments["cartSubtotal"];
 
     return Scaffold(
+      backgroundColor: const Color(0xff323232),
       appBar: AppBar(
+        backgroundColor: const Color(0xff14FFEC),
         centerTitle: true,
-        title: const Text("Payment"),
+        title: const Text(
+          "Payment",
+          style: TextStyle(
+            color: Color(0xff212121),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
+          // constraints: const BoxConstraints.expand(),
+          color: const Color(0xff323232),
           padding: const EdgeInsets.all(16),
           // color: Colors.pink[50],
           child: Column(
             children: [
-              Image.asset('assets/images/paylogo.png'),
+              Image.asset('assets/images/payimage.png'),
               const SizedBox(
                 height: 10,
               ),
               const Divider(
-                // color: Colors.pink,
+                color: Colors.white,
                 thickness: 2,
               ),
               Row(
@@ -46,6 +55,7 @@ class PaymentScreen extends StatelessWidget {
                   const Text(
                     "Cart SubTotal : ",
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
@@ -53,6 +63,7 @@ class PaymentScreen extends StatelessWidget {
                   Text(
                     "\$ " + cartSubtotal,
                     style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 25,
                       // fontWeight: FontWeight.bold,
                     ),
@@ -60,9 +71,10 @@ class PaymentScreen extends StatelessWidget {
                 ],
               ),
               const Divider(
-                // color: Colors.pink,
+                color: Colors.white,
                 thickness: 2,
               ),
+              SizedBox(height: 20,),
               Form(
                   key: _formKey,
                   child: Column(
@@ -72,6 +84,7 @@ class PaymentScreen extends StatelessWidget {
                           const Text(
                             "Card Type",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 25,
                             ),
                           ),
@@ -80,6 +93,17 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                              ),
                               keyboardType: TextInputType.text,
                               controller: cardTypeController,
                               validator: (value) {
@@ -97,6 +121,7 @@ class PaymentScreen extends StatelessWidget {
                           const Text(
                             "Name",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 25,
                             ),
                           ),
@@ -105,6 +130,17 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                              ),
                               keyboardType: TextInputType.text,
                               controller: nameController,
                               validator: (value) {
@@ -122,6 +158,7 @@ class PaymentScreen extends StatelessWidget {
                           const Text(
                             "Card Number",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 25,
                             ),
                           ),
@@ -130,6 +167,17 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                              ),
                               keyboardType: TextInputType.number,
                               controller: cardNumberController,
                               validator: (value) {
@@ -149,6 +197,7 @@ class PaymentScreen extends StatelessWidget {
                           const Text(
                             "CVV",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 25,
                             ),
                           ),
@@ -157,6 +206,18 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
+                                
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                              ),
                               keyboardType: TextInputType.number,
                               controller: cvvController,
                               validator: (value) {
@@ -172,6 +233,7 @@ class PaymentScreen extends StatelessWidget {
                           const Text(
                             "Expiry Date",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 25,
                             ),
                           ),
@@ -180,6 +242,20 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Expanded(
                             child: TextFormField(
+                              style: const TextStyle(color: Colors.white),
+                              decoration: const InputDecoration(
+                                focusColor: Color(0xff14FFEC),
+                               labelStyle:
+                  TextStyle(color: Colors.white, fontSize: 16.0),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xff14FFEC)),
+                                ),
+                              ),
                               keyboardType: TextInputType.text,
                               controller: expiryDateController,
                               validator: (value) {
@@ -198,7 +274,7 @@ class PaymentScreen extends StatelessWidget {
               //   thickness: 2,
               // ),
               const SizedBox(
-                height: 50,
+                height: 75,
               ),
               ElevatedButton(
                   onPressed: () async {
@@ -211,21 +287,26 @@ class PaymentScreen extends StatelessWidget {
                               cardNumber: int.parse(cardNumberController.text),
                               date: expiryDateController.text,
                               amount: double.parse(cartSubtotal));
-                              // log(int.parse(cvvController.text).toString());
+                      // log(int.parse(cvvController.text).toString());
                       // ScaffoldMessenger.of(context).showSnackBar(
                       //   SnackBar(content: Text(paymentResponseModel?.message ?? "Unable to Process Transaction")),
                       // );
                       showCupertinoDialog(
                         context: context,
-
-
-                        builder:(_)=> CupertinoAlertDialog(
+                        builder: (_) => CupertinoAlertDialog(
                           title: const Text("Payment Status"),
-                          content: Text(paymentResponseModel?.message ?? "Sorry Unable to Process Transaction"),
+                          content: Text(paymentResponseModel?.message ??
+                              "Sorry Unable to Process Transaction"),
                           actions: [
-                            ElevatedButton(onPressed: (){
-                              Navigator.popUntil(context, ModalRoute.withName('/homescreen'));
-                            }, child: const Text("OK"))
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.popUntil(context,
+                                      ModalRoute.withName('/homescreen'));
+                                },
+                                style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(const Color(0xff14FFEC),),),
+                                child: const Text("OK"))
                           ],
                         ),
                       );
@@ -234,12 +315,12 @@ class PaymentScreen extends StatelessWidget {
                   child: const Text(
                     "Pay Now",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontSize: 18,
                     ),
                   ),
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black),
+                      backgroundColor: MaterialStateProperty.all(const Color(0xff14FFEC)),
                       fixedSize:
                           MaterialStateProperty.all<Size>(const Size(150, 50)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(

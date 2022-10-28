@@ -19,8 +19,10 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: Colors.pink[50],
-      child: Image.asset('assets/images/downtown.jpg'),
+      color: Colors.black,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Image.asset('assets/images/logo.jpeg')),
       
     );
   }

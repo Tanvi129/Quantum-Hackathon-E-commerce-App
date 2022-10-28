@@ -5,7 +5,7 @@ import 'package:quantum_hackathon/models/productModel.dart';
 import 'package:quantum_hackathon/services/CartApi.dart';
 
 class CartListItem extends StatefulWidget {
-    CartListItem({Key? key, this.productModel}) : super(key: key);
+  CartListItem({Key? key, this.productModel}) : super(key: key);
   final ProductModel? productModel;
 
   @override
@@ -29,13 +29,12 @@ class _CartListItemState extends State<CartListItem> {
           children: [
             InkWell(
               onTap: () {
-                        Navigator.pushNamed(context, '/productscreen',
-                            arguments: Arguments(
-                                productname: widget.productModel!.productName,
-                                price:
-                                    widget.productModel!.price,
-                                productId: widget.productModel!.productId));
-                      },
+                Navigator.pushNamed(context, '/productscreen',
+                    arguments: Arguments(
+                        productname: widget.productModel!.productName,
+                        price: widget.productModel!.price,
+                        productId: widget.productModel!.productId));
+              },
               child: Container(
                 height: 150,
                 child: ClipRRect(
@@ -52,7 +51,7 @@ class _CartListItemState extends State<CartListItem> {
               direction: Axis.vertical,
               children: [
                 Text(
-                  widget.productModel?.productName ??"Unable to load",
+                  widget.productModel?.productName ?? "Unable to load",
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -62,7 +61,7 @@ class _CartListItemState extends State<CartListItem> {
                   height: 10,
                 ),
                 const Text(
-                  "Price: "  ,
+                  "Price: ",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -79,13 +78,19 @@ class _CartListItemState extends State<CartListItem> {
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                 
-
                   children: [
-                    const Padding(
-                      padding:  EdgeInsets.all(8.0),
-                      child: Icon(Icons.remove,
-                      color: Colors.pink),
+                     Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                            cartApi.removefromcart(widget.productModel!.productId);
+                          });
+                          Navigator.pushReplacementNamed(
+                              context, '/cartscreenlogic');
+                          },
+                          icon: const Icon(Icons.remove),
+                          color: Colors.pink),
                     ),
                     Text(
                       widget.productModel!.quantity.toString(),
@@ -93,19 +98,19 @@ class _CartListItemState extends State<CartListItem> {
                         fontSize: 18,
                       ),
                     ),
-                     Padding(
-                      padding:  const EdgeInsets.all(8.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: IconButton(
-                        onPressed:(){
+                        onPressed: () {
                           setState(() {
                             cartApi.addtocart(widget.productModel!.productId);
                           });
-                          Navigator.pushReplacementNamed(context, '/cartscreenlogic');
-
-
+                          Navigator.pushReplacementNamed(
+                              context, '/cartscreenlogic');
                         },
-                        icon:const Icon(Icons.add),
-                      color: Colors.pink,),
+                        icon: const Icon(Icons.add),
+                        color: Colors.pink,
+                      ),
                     ),
                   ],
                 ),

@@ -17,11 +17,14 @@ class _ProductScreenState extends State<ProductScreen> {
         ModalRoute.of(context)!.settings.arguments as Arguments;
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color(0xff14FFEC),
         centerTitle: true,
-        title: const Text("Downtown"),
+        title: const Text("Downtown",style: TextStyle(
+          color: Color(0xff212121),
+        ),),
       ),
       body: Container(
-        color: Colors.pink[50],
+        color: const Color(0xff323232),
         constraints: const BoxConstraints.expand(),
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
@@ -30,8 +33,10 @@ class _ProductScreenState extends State<ProductScreen> {
             children: [
               Text(
                 args.productname ?? "Unable to Load",
+                
                 textAlign: TextAlign.left,
                 style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                 ),
@@ -43,13 +48,16 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 400,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
+                  
                   border: Border.all(
+                    color: Color(0xffb0b5b8),
                     width: 5,
                   ),
-                  color: Colors.black,
+                  
                 ),
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
+                    // borderRadius: BorderRadius.circular(15),
+                    
                     child: Image.asset("assets/images/dressplaceholder.jpg")),
               ),
               const SizedBox(
@@ -60,6 +68,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: Text(
                   "Price: ",
                   style: TextStyle(
+                    color: Colors.white,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),
@@ -70,6 +79,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: Text(
                   "\$ " + args.price.toString(),
                   style: const TextStyle(
+                    color: Colors.white,
                     fontSize: 24,
                   ),
                 ),
@@ -78,8 +88,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 height: 10,
               ),
               const Text(
-                "Some very nice description about the Prouduct. ",
+                "Some very nice description about the Product. ",
                 style: TextStyle(
+                  color: Colors.white,
                   fontSize: 20,
                 ),
               ),
@@ -98,13 +109,13 @@ class _ProductScreenState extends State<ProductScreen> {
                     child: const Text(
                       "Add To Cart",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontSize: 18,
                       ),
                     ),
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.black),
+                            MaterialStateProperty.all(const Color(0xff14FFEC),),
                         fixedSize: MaterialStateProperty.all<Size>(
                             const Size(150, 50)),
                         shape:
