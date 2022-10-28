@@ -133,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: ShoppingListItem(
                                   productname: product[index].productName,
                                   price: product[index].price,
+                                  productId: product[index].productId,
                                 ));
                           }),
                     );

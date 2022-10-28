@@ -15,6 +15,20 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     final Arguments args =
         ModalRoute.of(context)!.settings.arguments as Arguments;
+
+        String imagedisplay(){
+    if(args.productId==1){
+      return "assets/images/laptop.jpeg";
+    }
+    if(args.productId==2){
+      return "assets/images/phone.jpeg";
+    }if(args.productId==3){
+      return "assets/images/headphone.jpeg";
+    }if(args.productId==4){
+      return "assets/images/camera.jpeg";
+    }
+    return "assets/images/dressplaceholder.jpg";
+  }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff14FFEC),
@@ -58,7 +72,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: ClipRRect(
                     // borderRadius: BorderRadius.circular(15),
                     
-                    child: Image.asset("assets/images/dressplaceholder.jpg")),
+                    child: Image.asset(imagedisplay())),
               ),
               const SizedBox(
                 height: 25,
@@ -129,5 +143,8 @@ class _ProductScreenState extends State<ProductScreen> {
         ),
       ),
     );
+    
   }
+  
+  
 }

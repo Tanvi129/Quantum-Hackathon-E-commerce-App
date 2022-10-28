@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class ShoppingListItem
  extends StatelessWidget {
   const ShoppingListItem
-  ({Key? key, this.productname, this.price}) : super(key: key);
+  ({Key? key, this.productname, this.price, this.productId}) : super(key: key);
 
   final String? productname;
   final double? price;
+  final int? productId;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class ShoppingListItem
               height: 200,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child: Image.asset("assets/images/dressplaceholder.jpg")),
+                  child: Image.asset(imagedisplay())),
             ),
             const SizedBox(
               width: 10,
@@ -60,5 +61,18 @@ class ShoppingListItem
             ),
           ]),
     );
+  }
+  String imagedisplay(){
+    if(productId==1){
+      return "assets/images/laptop.jpeg";
+    }
+    if(productId==2){
+      return "assets/images/phone.jpeg";
+    }if(productId==3){
+      return "assets/images/headphone.jpeg";
+    }if(productId==4){
+      return "assets/images/camera.jpeg";
+    }
+    return "assets/images/dressplaceholder.jpg";
   }
 }

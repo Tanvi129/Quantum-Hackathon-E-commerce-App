@@ -40,7 +40,8 @@ class _CartListItemState extends State<CartListItem> {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Image.asset(
-                      "assets/images/dressplaceholder.jpg",
+                        imagedisplay(),
+
                     )),
               ),
             ),
@@ -118,5 +119,19 @@ class _CartListItemState extends State<CartListItem> {
             ),
           ]),
     );
+  }
+
+  String imagedisplay(){
+    if(widget.productModel!.productId==1){
+      return "assets/images/laptop.jpeg";
+    }
+    if(widget.productModel!.productId==2){
+      return "assets/images/phone.jpeg";
+    }if(widget.productModel!.productId==3){
+      return "assets/images/headphone.jpeg";
+    }if(widget.productModel!.productId==4){
+      return "assets/images/camera.jpeg";
+    }
+    return "assets/images/dressplaceholder.jpg";
   }
 }
